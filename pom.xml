@@ -11,7 +11,11 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<camel.version>2.17.0.redhat-630356</camel.version>
+		<javaee.version>6.0</javaee.version>
 	</properties>
 
 	<repositories>
@@ -38,6 +42,7 @@
 			</activation>
 			<properties>
 				<camel-version>2.21.0.fuse-720050-redhat-00001</camel-version>
+				<javaee.version>7.0</javaee.version>
 			</properties>
 			<build>
 				<finalName>CamelDemoApp-EAP72</finalName>
@@ -46,11 +51,28 @@
 	</profiles>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
 			<version>${camel.version}</version>
+			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cdi</artifactId>
+			<version>${camel.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
