@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cz.gemsystem</groupId>
+	<artifactId>CamelDemoApp</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<description>Demo application to test migration from the EAP 6.4 to EAP 7.2</description>
+	<packaging>war</packaging>
+
+	<properties>
+		<camel.version>2.17.0.redhat-630356</camel.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>redhat-ga</id>
+			<name>Red Hat GA repository</name>
+			<url>http://maven.repository.redhat.com/ga/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<profile>
+			<id>eap7.2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<camel-version>2.21.0.fuse-720050-redhat-00001</camel-version>
+			</properties>
+			<build>
+				<finalName>CamelDemoApp-EAP72</finalName>
+			</build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>CamelDemoApp-EAP64</finalName>
+	</build>
+
+
+</project>
